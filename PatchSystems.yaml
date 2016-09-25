@@ -1,0 +1,6 @@
+---
+- name: Patching All Linux Servers
+  hosts: all
+
+  roles: 
+      - patching
