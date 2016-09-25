@@ -9,9 +9,9 @@
   when: ansible_os_family == "RedHat"
   notify: restart system
 
-- name: Removing ZYPPER custom repositories
-  zypper_repository: name= "{{ repo_name }}" state=absent
-  when: ansible_os_family == "Suse"
+#- name: Removing ZYPPER custom repositories
+#  zypper_repository: name= "{{ repo_name }}" state=absent
+#  when: ansible_os_family == "Suse"
 
 - name: Patching ZYPPER based packages
   zypper: name=* state=latest 
