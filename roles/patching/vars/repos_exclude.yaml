@@ -1,0 +1,4 @@
+---
+- name: Setting repo excludes
+  set_fact: 
+    repo_exclude: "repo1,repo2"

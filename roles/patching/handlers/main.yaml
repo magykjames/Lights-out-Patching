@@ -1,4 +1,4 @@
 ---
 - name: restart system
-  command: /sbin/reboot
+  command: /sbin/shutdown -r now
   when: reboot

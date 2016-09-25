@@ -1,6 +1,5 @@
 ##########################################################
-# This is an ANSIBLE managed file!!
-# Local edits will eventually be overwritten
+# This file is managed by Ansible for Lights Out Patching
 ##########################################################
 {% for pkg in lock_packages %}
 {{ pkg.epoch }}:{{ pkg.name }}-{{ pkg.version }}.*

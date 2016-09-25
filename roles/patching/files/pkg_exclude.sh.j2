@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pkg_excludes=`/bin/grep exclude= /etc/exclude_packages.conf | cut -d= -f2 | /bin/sed 's/ /,/g'`
+
+cat <<EOF
+{
+    "exclude_pkg" : "$pkg_excludes"
+}
+EOF

@@ -1,5 +1,5 @@
 ---
-supported_kernel_version: "3.10.0-327.18.2*"
+supported_kernel_version: "*"
 lock_packages: 
   - { name: 'linux-virtual', version: '{{supported_kernel_version}}', priority: '1001' }
   - { name: 'linux-image-virtual', version: '{{supported_kernel_version}}', priority: '1001' }

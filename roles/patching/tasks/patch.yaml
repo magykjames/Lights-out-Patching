@@ -5,12 +5,16 @@
   notify: restart system
 
 - name: Patching YUM based packages
-  yum: name=* state=latest
+  yum: name=* state=latest disablerepo= "{{ repo_name }}" exclude="{{ansible_local.pkgexclude.exclude_pkg}}"
   when: ansible_os_family == "RedHat"
   notify: restart system
 
-#- name: Check if reboot is required
-#  stat: path=/var/run/reboot-required
-#  register: reboot_req
-#  changed_when: reboot_req.stat.exists
-#  notify: restart system
+- name: Removing ZYPPER custom repositories
+  zypper_repository: name= "{{ repo_name }}" state=absent
+  when: ansible_os_family == "Suse"
+
+- name: Patching ZYPPER based packages
+  zypper: name=* state=latest 
+  when: ansible_os_family == "Suse"
+  notify: restart system
+

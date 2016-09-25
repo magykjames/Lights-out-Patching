@@ -1,0 +1,21 @@
+---
+
+- name: ensure custom facts directory exists on "{{ inventory_hostname }}"
+  file: >
+    path=/etc/ansible/facts.d
+    recurse=yes
+    state=directory
+  #when: ansible_os_family == "RedHat"
+
+- name: install custom fact module for package exclusions on "{{ inventory_hostname }}"
+  template: > 
+    src="{{ role_path }}/files/pkg_exclude.sh.j2"
+    dest=/etc/ansible/facts.d/pkgexclude.fact
+    mode=0755
+  #when: ansible_os_family == "RedHat"
+
+- name: reload ansible_local
+  setup: filter=ansible_local
+
+ 
+
